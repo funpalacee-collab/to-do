@@ -1,0 +1,436 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Jost", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #1d1b1b 0%, #f83e3e 100%);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.todo-app {
+    width: 40%;
+    max-width: 400%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+}
+
+.stats-container {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    grid-area: 20px;
+    width: 100%;
+}
+
+.details {
+    width: 100%;
+}
+
+.details h3 {
+    color: #fff;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 7px;
+    background: rgba(255, 194, 209, 0.3);
+    border-radius: 20px;
+    position: relative;
+    margin-top: 15px;
+}
+
+#progress {
+    width: 0%;
+    height: 100%;
+    background: #d53369;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+#numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background: #d53369;
+    border: 2px solid rgba(255, 194, 209, 0.3);
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+
+.input-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px 17px;
+    font-size: 1.1rem;
+    border: none;
+    outline: none;
+    border-radius: 22px;
+    background: rgba(255, 194, 209, 0.3);
+    color: #dbdbdb;
+}
+
+.input-area input::placeholder {
+    color: #bcbcbc;
+}
+
+.input-area input:focus {
+    border: 1px solid #d53369;
+    box-shadow: 0 0 30px #d53369;
+}
+
+.input-area button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.1rem;
+    background: rgba(255, 194, 209, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+    transform: scale(1.1);
+    background: #ff6f91;
+}
+
+.todo-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#task-list {
+    width: 100%;
+}
+
+#task-list li {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 194, 209, 0.3);
+    margin-bottom: 10px;
+    padding: 8px 10px 8px 10px;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    color: #fff;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+
+#task-list li:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInRotateUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) rotate(360deg) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+}
+
+#task-list li.animate {
+    animation: fadeInRotateUp 0.5s ease forwards;
+}
+
+@keyframes rotateOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px) rotate(360deg) scale(0.5);
+    }
+}
+
+#task-list li .checkbox {
+    min-width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-right: 20px;
+    background: transparent;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease;
+}
+
+#task-list li input[type="checkbox"]:checked+span {
+    color: #dbdbdb;
+    text-decoration: line-through #d53369 2px;
+}
+
+#task-list li .checkbox:checked {
+    background: #d53369;
+    transform: scale(1.2);
+}
+
+#task-list li .checkbox:checked::before {
+    content: '\2713';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: #fff;
+}
+
+#task-list li span {
+    flex: 1;
+    word-wrap: break-word;
+}
+
+.task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.task-btn button {
+    background-color: rgba(255, 194, 209, 0.3);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.task-btn button:hover {
+    transform: scale(1.2);
+}
+
+.task-btn .edit-btn {
+    background-color: #ffbf00;
+}
+
+.task-btn .delete-btn {
+    background-color: #d53369;
+}
+
+.edit-input {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    border-radius: 22px;
+    background: rgba(255, 194, 209, 0.3);
+    color: #dbdbdb;
+    opacity: 0;
+    width: 0;
+    transition: all 0.5s ease;
+}
+
+.edit-input:focus {
+    border: 2px solid #d53369;
+    box-shadow: 0 0 30px #d53369;
+}
+
+.edit-input.show {
+    opacity: 1;
+    width: 100%;
+}
+
+.edit-btn i {
+    transition: transform 0.5s ease, color 0.3s ease;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Medium screens – tablets */
+@media (max-width: 1024px) {
+    .todo-app {
+        width: 60%;
+        padding: 1.8rem;
+        gap: 25px;
+    }
+
+    #task-list li {
+        font-size: 1.3rem;
+        padding: 8px 12px;
+    }
+
+    .input-area input {
+        font-size: 1rem;
+    }
+
+    #numbers {
+        width: 70px;
+        height: 70px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Small screens – large phones */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .todo-app {
+        width: 100%;
+        padding: 1.5rem;
+        gap: 20px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    #numbers {
+        width: 65px;
+        height: 65px;
+        font-size: 1.2rem;
+    }
+
+    .input-area {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .input-area button {
+        margin-left: 0;
+        width: 45px;
+        height: 45px;
+    }
+
+    #task-list li {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+    }
+
+    .task-btn {
+        margin-top: 8px;
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+/* Extra small screens – small phones */
+@media (max-width: 480px) {
+    .todo-app {
+        width: 100%;
+        padding: 1.2rem;
+    }
+
+    #numbers {
+        width: 55px;
+        height: 55px;
+        font-size: 1rem;
+    }
+
+    .input-area input {
+        font-size: 0.95rem;
+        padding: 8px 14px;
+    }
+
+    .task-btn button {
+        width: 27px;
+        height: 27px;
+        font-size: 0.7rem;
+    }
+
+    #task-list li {
+        font-size: 1rem;
+        width: auto;
+    }
+}
+
+/* Celebration */
+
+#confetti-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#celebration {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: #d53369;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: all 0.4s ease;
+}
+
+#celebration.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+.creator {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    letter-spacing: 1px;
+}

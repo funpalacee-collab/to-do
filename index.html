@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <h1 data-aos="fade-down">To-Do App</h1>
+
+            <div class="stats-container">
+                <div class="details">
+                    <h3>Keep it Up!</h3>
+                    <div id="progress-bar">
+                        <div id="progress"></div>
+                    </div>
+                </div>
+
+                <div class="stats-number">
+                    <p id="numbers">0 / 0</p>
+                </div>
+            </div>
+
+            <form class="input-area" data-aos="fade-up">
+                <input type="text" id="task-input" placeholder="Add a New Task.....">
+                <button type="submit" id="add-task-btn">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
+
+            <div class="todo-container">
+                <ul id="task-list"></ul>
+            </div>
+
+            <!-- ✅ CREATOR NAME ADDED -->
+            <p class="creator">Created by HUZAIFA</p>
+        </div>
+
+        <!-- 🎉 Celebration Popup -->
+        <div id="celebration">
+            🎉 All Tasks Completed! 🎉
+        </div>
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
